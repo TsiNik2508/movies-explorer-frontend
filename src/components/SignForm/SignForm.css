@@ -1,0 +1,39 @@
+.sign-form__name {
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: #8B8B8B;
+  line-height: normal;
+  display: inline-block;
+}
+
+.sign-form__field {
+  padding-bottom: 11px;
+  padding-left: 0;
+  width: 100%;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: normal;
+  color: #FFF;
+  background-color: transparent;
+  border:none;
+  border-bottom: 1px solid #424242;
+}
+
+.sign-form__field::placeholder {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: normal;
+  color: #FFF;
+  background-color: transparent;
+}
+
+.sign-form__error {
+  font-size: 12px;
+  color: #EE3465;
+  line-height: normal;
+  visibility: hidden;
+}
+
+.sign-form__error_visible {
+  visibility: visible;
+}

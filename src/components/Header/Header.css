@@ -1,0 +1,44 @@
+.header {
+  padding: 18px 15px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header_main {
+  background-color: #073042;
+}
+
+.header__content {
+  height: 38px;
+  transition: .5s;
+}
+
+.header__content:hover {
+  opacity: .8;
+}
+
+@media screen and (min-width: 1279px) {
+  .header {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-right: 70px;
+    padding-left: 70px;
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    padding: 18px 30px;
+  }
+}
+
+.header__content {
+  height: 38px;
+  transition: .5s;
+}
+
+.header__content:hover {
+  opacity: .8;
+}
