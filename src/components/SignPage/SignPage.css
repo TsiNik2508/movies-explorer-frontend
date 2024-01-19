@@ -39,7 +39,7 @@
 
 .sign-page__button {
   width: 100%;
-  margin-top: auto;
+  margin-top: 221px;
   margin-bottom: 15px;
   padding: 13px;
   font-size: 13px;
@@ -88,13 +88,6 @@
   opacity: .7;
 }
 
-@media screen and (max-width: 1279px) {
-  .sign-page {
-    padding-top: 72px;
-    padding-bottom: 72px;
-  }
-}
-
 @media screen and (min-width: 768px) {
   .sign-page {
     margin: 0 auto;
@@ -117,6 +110,7 @@
   }
 
   .sign-page__button {
+    margin-top: 128px;
     margin-bottom: 17px;
     padding: 13px;
     font-size: 15px;
@@ -124,5 +118,12 @@
 
   .sign-page__log {
     font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .sign-page {
+    padding-top: 72px;
+    padding-bottom: 72px;
   }
 }

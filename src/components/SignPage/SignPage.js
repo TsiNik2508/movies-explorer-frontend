@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../images/logo.png";
+import logo from "../../images/Logo.svg";
 import "./SignPage.css";
 
 const SignPage = ({
@@ -21,11 +21,10 @@ const SignPage = ({
       </div>
       <form className="sign-page__form">
         {formSign}
-        <button disabled={inputVal} className="sign-page__button" type="submit">
+      </form>
+      <button disabled={inputVal} className="sign-page__button" type="submit">
           {buttonText}
         </button>
-      </form>
-
       <p className="sign-page__log">
         {logText}
         <Link className="sign-page__sign-link" to={path}>

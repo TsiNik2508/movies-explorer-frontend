@@ -1,5 +1,5 @@
 .about{
-  padding: 70px 14px;
+  padding: 74px 14px;
 }
 
 .about__title {
@@ -12,22 +12,24 @@
 }
 
 .about__content {
-  margin-top: 60px;
+  margin-top: 53px;
   display: flex;
   flex-direction: column;
 }
 
 .about__photo {
   margin: 0 auto;
-  width: 270px;
-  height: 327px;
+  width: 286px;
+  height: 357px;
   border-radius: 10px;
   object-position: center;
   object-fit: cover;
 }
 
 .about__container {
-  margin-top: 42px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
 }
@@ -39,9 +41,9 @@
 }
 
 .about__description {
-  margin-top: 18px;
+  margin-top: 16px;
   margin-bottom: 0;
-  font-size: 18px;
+  font-size: 10px;
   font-weight: 500;
   line-height: 20px;
 }
@@ -52,7 +54,7 @@
 }
 
 .about__link {
-  margin-top: 45px;
+  margin-top: 34px;
   text-decoration: none;
   color: #fff;
   font-size: 14px;
@@ -65,7 +67,59 @@
   opacity: .7;
 }
 
-@media screen and (min-width: 1279px) {
+@media screen and (min-width: 576px) {
+  .about__content {
+    gap: 40px;
+    flex-direction: row-reverse;
+  }
+  
+  .about__container {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .about__photo {
+    width: 296px;
+    height: 326px;
+  }
+
+  .about__link {
+    margin-top: auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .about {
+    padding: 90px 45px;
+  }
+
+  .about__title {
+    padding-bottom: 23px;
+    font-size: 22px;
+  }
+
+  .about__content {
+    margin-top: 76px;
+    gap: 50px;
+  }
+
+  .about__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .about__description {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about__description:first-of-type {
+    margin-top: 16px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
   .about {
     padding: 112px 70px 100px;
   }
@@ -91,55 +145,5 @@
     margin-top: 25px;
     line-height: 22px;
     max-width: 599px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .about {
-    padding: 90px 45px;
-  }
-
-  .about__title {
-    padding-bottom: 23px;
-    font-size: 22px;
-  }
-
-  .about__content {
-    margin-top: 66px;
-    gap: 50px;
-  }
-
-  .about__name {
-    font-size: 40px;
-    line-height: 40px;
-  }
-
-  .about__description {
-    font-size: 12px;
-    line-height: 18px;
-  }
-
-  .about__text:first-of-type {
-    margin-top: 16px;
-  }
-}
-
-@media screen and (min-width: 480px) {
-  .about__content {
-    gap: 40px;
-    flex-direction: row-reverse;
-  }
-  
-  .about__container {
-    margin-top: 0;
-  }
-  
-  .about__photo {
-    width: 292px;
-    height: 352px;
-  }
-
-  .about__link {
-    margin-top: auto;
   }
 }

@@ -6,7 +6,7 @@ import "./MoviesCardList.css";
 import MovieImg from '../../../images/Movie.png';
 
 const MoviesCardList = () => {
-  let shownMovies = 5;
+  let shownMovies = 12;
   let moviesToAdd = 2;
 
   const resizeWindow = () => {

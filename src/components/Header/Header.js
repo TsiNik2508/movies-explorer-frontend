@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import "./Header.css";
-import logo from "../../images/logo.png";
+import logo from "../../images/Logo.svg";
 import Navigation from "../Navigation/Navigation";
 
 const Header = ({ isLoggedIn }) => {
@@ -10,7 +10,7 @@ const Header = ({ isLoggedIn }) => {
     <header
       className={`header ${location.pathname !== "/" ? "" : "header_main"}`}
     >
-      <NavLink to="/" className="header__content">
+      <NavLink to="/" className="header__logo-content">
         <img className="header__logo" src={logo} alt="Логотип" />
       </NavLink>
       <Navigation isLoggedIn={isLoggedIn} />

@@ -1,5 +1,5 @@
 .techs {
-  padding: 85px 20px;
+  padding: 68px 20px;
   text-align: center;
 }
 
@@ -9,11 +9,13 @@
   font-size: 21px;
   font-weight: 400;
   border-bottom: 1px solid #000;
+  display: flex;
+  align-items: start;
 }
 
 .techs__subtitle {
-  margin-top: 70px;
-  margin-bottom: 23px;
+  margin-top: 48px;
+  margin-bottom: 15px;
   text-align: center;
   font-size: 45px;
   font-weight: 400;
@@ -33,7 +35,7 @@
   margin-bottom: 0;
   padding: 0 45px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 86px);
+  grid-template-columns: repeat(auto-fit, 84px);
   gap: 11px;
   justify-content: center;
 }
@@ -47,36 +49,6 @@
   background-color: #303030;
   border-radius: 13px;
   list-style: none;
-}
-
-@media screen and (min-width: 1279px) {
-  .techs {
-    padding: 105px 68px;
-  }
-
-  .techs__title {
-    padding-bottom: 18px;
-  }
-
-  .techs__subtitle {
-    margin-top: 94px;
-    margin-bottom: 20px;
-  }
-
-  .techs__description {
-    max-width: 455px;
-    font-size: 12px;
-    line-height: 20px;
-  }
-
-  .techs__list {
-    margin-top: 103px;
-    grid-template-columns: repeat(auto-fit, 90px);
-  }
-
-  .techs__lists {
-    font-size: 15px;
-  }
 }
 
 @media screen and (min-width: 768px) {
@@ -105,5 +77,35 @@
 
   .techs__lists {
     margin-top: 80px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .techs {
+    padding: 107px 68px;
+  }
+
+  .techs__title {
+    padding-bottom: 18px;
+  }
+
+  .techs__subtitle {
+    margin-top: 94px;
+    margin-bottom: 20px;
+  }
+
+  .techs__description {
+    max-width: 455px;
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .techs__list {
+    margin-top: 17px;
+    grid-template-columns: repeat(auto-fit, 84px);
+  }
+
+  .techs__lists {
+    font-size: 15px;
   }
 }

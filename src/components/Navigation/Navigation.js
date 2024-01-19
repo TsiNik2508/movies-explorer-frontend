@@ -25,7 +25,7 @@ const Navigation = ({ isLoggedIn }) => {
   return isLoggedIn ? (
     <div
       onClick={handleCloseOverlay}
-      className={`nav-wrap ${isLoginOpen ? "nav-wrap_cover" : ""}`}
+      className={`nav-wrap ${isLoginOpen ? "nav_cover" : ""}`}
     >
       <nav
         className={`nav nav_login
