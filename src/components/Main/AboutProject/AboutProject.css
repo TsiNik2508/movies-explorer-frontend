@@ -1,32 +1,34 @@
 .about {
-  padding: 75px 18px;
+  padding: 70px 18px;
 }
 
 .about__title {
   margin: 0;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #DADADA;
-  font-size: 22px;
+  padding-bottom: 28px;
+  font-size: 18px;
   font-weight: 400;
+  letter-spacing: -0.72px;
+  border-bottom: 1px solid #DADADA;
 }
 
 .about__subtitle {
-  margin-top: 59px;
-  margin-bottom: 19px;
-  font-size: 20px;
+  margin-top: 60px;
+  margin-bottom: 16px;
+  font-size: 18px;
   font-weight: 400;
+  letter-spacing: -0.72px;
   line-height: normal;
 }
 
 .about__description {
   margin: 0;
-  max-width: 319px;
-  font-size: 14px;
-  line-height: 18px;
+  max-width: 284px;
+  font-size: 11px;
+  line-height: 16px;
 }
 
 .about__time {
-  margin-top: 44px;
+  margin-top: 60px;
   display: grid;
   row-gap: 13px;
   grid-template-columns: 35%  65%;
@@ -37,7 +39,7 @@
   padding: 11px;
   display: block;
   text-align: center;
-  font-size: 14px;
+  font-size: 11px;
 }
 
 .about__week:first-of-type {
@@ -55,31 +57,32 @@
   color: #A0A0A0;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 420px) {
   .about__box {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 32px;
   }
 
   .about__subtitle {
     font-size: 20px;
+    letter-spacing: -0.8px;
   }
 
   .about__description {
-    max-width: 358px;
-    font-size: 11px;
-    line-height: 16px;
+    max-width: 352px;
+    font-size: 12px;
+    line-height: 18px;
   }
 
   .about__time {
     grid-template-columns: 140px  1fr;
-    row-gap: 7px;
+    row-gap: 6px;
   }
 
   .about__week {
     padding: 9px;
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
@@ -91,7 +94,8 @@
 
   .about__title {
     padding-bottom: 23px;
-    font-size: 23px;
+    font-size: 22px;
+    letter-spacing: -0.88px;
   }
 
   .about__subtitle {
@@ -100,35 +104,35 @@
   }
 
   .about__time {
-    margin-top: 93px;
+    margin-top: 94px;
     row-gap: 14px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .about {
-    padding: 113px 49px;
+    padding: 112px 70px;
   }
 
   .about__box {
-    gap: 4px;
+    gap: 40px;
   }
   
   .about__subtitle {
     margin-top: 70px;
-    margin-bottom: 27px;
+    margin-bottom: 28px;
   }
 
   .about__description {
     max-width: unset;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 18px;
   }
 
   .about__time {
-    margin-top: 110px;
-    grid-template-columns: 225px  1fr;
-    row-gap: 15px;
+    margin-top: 113px;
+    grid-template-columns: 228px  1fr;
+    row-gap: 17px;
   }
 }
 

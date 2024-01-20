@@ -1,18 +1,27 @@
 .movie-card {
-  padding: 21px 0;
-  background-color: #222;
-  align-items: center;
-  gap: 15px;
+  padding: 14px 0;
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
+  background-color: #222;
+  align-items: center;
+  gap: 14px;
+  border-radius: 6px;
   box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+}
+
+.movie-card__container {
+  padding-left: 14px;
+  padding-right: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
 }
 
 .movie-card__title {
   margin: 0;
-  margin-right: 13px;
-  font-size: 14px;
+  margin-right: 15px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 18px;
   text-overflow: ellipsis;
@@ -21,29 +30,29 @@
 }
 
 .movie-card__duration {
-  font-size: 11px;
-  line-height: 19px;
+  font-size: 10px;
+  line-height: 18px;
   color: #8B8B8B;
   white-space: nowrap;
 }
 
 .movie-card__image {
   width: 100%;
-  height: 166px;
+  height: 168px;
   box-sizing: border-box;
   object-fit: cover;
   object-position: center;
 }
 
 .movie-card__button {
-  padding: 8px;
+  padding: 9px;
   min-width: 100px;
   font-size: 12px;
   line-height: 11px;
-  color: #FFFFFF;
-  border-radius: 30px;
+  color: #FFF;
   background-color: #313131;
   border: none;
+  border-radius: 30px;
   transition: .5s;
   cursor: pointer;
 }
@@ -56,23 +65,19 @@
   background-color: #EE3465;
 }
 
-.movie-card__container {
-  width: 100%;
-  padding-left: 15px;
-  padding-right: 15px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-}
-
 @media screen and (min-width: 768px) {
   .movie-card {
-    padding: 19px 0;
-    gap: 19px;
+    padding: 18px 0;
+    gap: 18px;
+  }
+
+  .movie-card__container {
+    padding-left: 18px;
+    padding-right: 18px;
   }
 
   .movie-card__title {
-    font-size: 16px;
+    font-size: 15px;
   }
   
   .movie-card__duration {
@@ -82,33 +87,28 @@
   .movie-card__image {
     height: 190px;
   }
-  
-  .movie-card__container {
-    padding-left: 19px;
-    padding-right: 19px;
-  }
 }
 
 @media screen and (min-width: 1024px) {
   .movie-card {
-    padding: 17px 0;
-    gap: 17px;
+    padding: 18px 0;
+    gap: 18px;
+  }
+
+  .movie-card__container {
+    padding-left: 18px;
+    padding-right: 18px;
   }
 
   .movie-card__title {
-    font-size: 16px;
+    font-size: 15px;
   }
   
   .movie-card__duration {
-    font-size: 15px;
+    font-size: 13px;
   }
 
   .movie-card__image {
     height: 200px;
-  }
-  
-  .movie-card__container {
-    padding-left: 17px;
-    padding-right: 17px;
   }
 }

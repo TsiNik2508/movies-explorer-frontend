@@ -1,60 +1,59 @@
 .about{
-  padding: 74px 14px;
+  padding: 70px 14px;
 }
 
 .about__title {
   margin: 0;
   padding-bottom: 28px;
-  border-bottom: 1px solid #DADADA;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
   line-height: normal;
+  border-bottom: 1px solid #DADADA;
+  letter-spacing: -0.72px;
 }
 
 .about__content {
-  margin-top: 53px;
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
 }
 
 .about__photo {
   margin: 0 auto;
-  width: 286px;
-  height: 357px;
+  width: 292px;
+  height: 352px;
   border-radius: 10px;
-  object-position: center;
   object-fit: cover;
+  object-position: center;
 }
 
 .about__container {
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 42px;
   display: flex;
   flex-direction: column;
 }
 
 .about__name {
   margin: 0;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 400;
+  letter-spacing: -1.2px;
 }
 
 .about__description {
-  margin-top: 16px;
+  margin-top: 20px;
   margin-bottom: 0;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
-  line-height: 20px;
+  line-height: 16px;
 }
 
 .about__about:nth-of-type(2) {
   font-weight: 400;
-  font-size: 14px;
 }
 
 .about__link {
-  margin-top: 34px;
+  margin-top: 40px;
   text-decoration: none;
   color: #fff;
   font-size: 14px;
@@ -75,13 +74,11 @@
   
   .about__container {
     margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
   }
   
   .about__photo {
-    width: 296px;
-    height: 326px;
+    width: 255px;
+    height: 307px;
   }
 
   .about__link {
@@ -91,22 +88,24 @@
 
 @media screen and (min-width: 768px) {
   .about {
-    padding: 90px 45px;
+    padding: 89px 50px;
   }
 
   .about__title {
     padding-bottom: 23px;
     font-size: 22px;
+    letter-spacing: -0.88px;
   }
 
   .about__content {
-    margin-top: 76px;
+    margin-top: 66px;
     gap: 50px;
   }
 
   .about__name {
     font-size: 40px;
     line-height: 40px;
+    letter-spacing: -1.6px;
   }
 
   .about__description {
@@ -130,20 +129,26 @@
 
   .about__photo {
     margin: 0;
+    width: 270px;
+    height: 327px;
   }
 
   .about__name {
     font-size: 50px;
     line-height: 58px;
+    letter-spacing: -2px;
   }
 
   .about__description:first-of-type {
+    margin-top: 19px;
+    font-size: 18px;
     line-height: 20px;
   }
 
   .about__description:nth-of-type(2) {
     margin-top: 25px;
-    line-height: 22px;
     max-width: 599px;
+    font-size: 14px;
+    line-height: 22px;
   }
 }

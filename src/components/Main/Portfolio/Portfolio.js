@@ -4,8 +4,8 @@ const Portfolio = () => {
   return (
     <section className="portfolio">
       <h2 className="portfolio__title">Портфолио</h2>
-      <ul className="portfolio__lists">
-        <li className="portfolio__list">
+      <ul className="portfolio__list">
+        <li className="portfolio__item">
           <a
             className="portfolio__link"
             href="https://github.com/TsiNik2508/how-to-learn/"
@@ -16,7 +16,7 @@ const Portfolio = () => {
             <span>↗</span>
           </a>
         </li>
-        <li className="portfolio__list">
+        <li className="portfolio__item">
           <a
             className="portfolio__link"
             href="https://github.com/TsiNik2508/russian-travel/"
@@ -27,7 +27,7 @@ const Portfolio = () => {
             <span>↗</span>
           </a>
         </li>
-        <li className="portfolio__list">
+        <li className="portfolio__item">
           <a
             className="portfolio__link"
             href="https://github.com/TsiNik2508/mesto-react/"

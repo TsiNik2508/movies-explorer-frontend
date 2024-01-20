@@ -1,8 +1,8 @@
 .header {
-  padding: 18px 15px;
-  align-items: center;
+  padding: 18px 14px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .header_main {
@@ -18,27 +18,18 @@
   opacity: .8;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 576px) {
   .header {
     padding: 18px 30px;
   }
 }
 
-.header__logo-content {
-  height: 38px;
-  transition: .5s;
-}
-
-.header__logo-content:hover {
-  opacity: .8;
-}
-
-@media screen and (min-width: 1279px) {
+@media screen and (min-width: 1280px) {
   .header {
-    max-width: 1280px;
     margin: 0 auto;
-    padding-right: 90px;
-    padding-left: 50px;
+    padding-left: 70px;
+    padding-right: 70px;
+    max-width: 1280px;
     box-sizing: border-box;
   }
 }
