@@ -42,7 +42,9 @@ const MoviesCardList = () => {
   }, [shownMovies]);
 
   function showMore() {
-    setLoadIndex(loadIndex + moviesToAdd);
+    if (loadIndex < moviesArray.length) {
+      setLoadIndex(loadIndex + moviesToAdd);
+    }
   }
 
   const moviesArray = Array.from({ length: 8 }, () => ({
