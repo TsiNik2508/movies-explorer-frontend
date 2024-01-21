@@ -10,14 +10,14 @@ const Techs = () => {
           На курсе веб-разработки мы освоили технологии, которые применили в
           дипломном проекте.
         </p>
-        <ul className="techs__list">
-          <li className="techs__lists">HTML</li>
-          <li className="techs__lists">CSS</li>
-          <li className="techs__lists">JS</li>
-          <li className="techs__lists">React</li>
-          <li className="techs__lists">Git</li>
-          <li className="techs__lists">Express.js</li>
-          <li className="techs__lists">mongoDB</li>
+        <ul className="techs__lists">
+          <li className="techs__list">HTML</li>
+          <li className="techs__list">CSS</li>
+          <li className="techs__list">JS</li>
+          <li className="techs__list">React</li>
+          <li className="techs__list">Git</li>
+          <li className="techs__list">Express.js</li>
+          <li className="techs__list">mongoDB</li>
         </ul>
       </div>
     </section>

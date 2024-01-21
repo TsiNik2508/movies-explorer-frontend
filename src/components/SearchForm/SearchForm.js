@@ -28,7 +28,7 @@ const SearchForm = (props) => {
           name="checkbox"
           type="checkbox"
         ></input>
-        <span className="search-form__checkbox-title">Короткометражки</span>
+        <span className="search-form__checkbox-text">Короткометражки</span>
       </label>
     </form>
   );

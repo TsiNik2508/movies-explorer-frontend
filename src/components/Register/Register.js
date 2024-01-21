@@ -15,6 +15,12 @@ const Register = () => {
   return (
     <SignPage
       titleText="Добро пожаловать!"
+      buttonText="Зарегистрироваться"
+      logText="Уже зарегистрированы?"
+      path="/signin"
+      signLink="Войти"
+      inputVal={
+        !email.isInputValid || !password.isInputValid || !userName.isInputValid}
       formSign={
         <>
           <SignForm
@@ -50,13 +56,6 @@ const Register = () => {
             onBlur={(e) => password.onBlur(e)}
           />
         </>
-      }
-      buttonText="Зарегистрироваться"
-      logText="Уже зарегистрированы?"
-      path="/signin"
-      signLink="Войти"
-      inputVal={
-        !email.isInputValid || !password.isInputValid || !userName.isInputValid
       }
     />
   );

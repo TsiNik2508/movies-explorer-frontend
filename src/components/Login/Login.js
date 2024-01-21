@@ -10,6 +10,11 @@ const Login = () => {
   return (
     <SignPage
       titleText="Рады видеть!"
+      buttonText="Войти"
+      logText="Ещё не зарегистрированы?"
+      path="/signup"
+      signLink="Регистрация"
+      inputVal={!email.isInputValid || !password.isInputValid}
       formSign={
         <>
           <SignForm
@@ -32,11 +37,6 @@ const Login = () => {
           />
         </>
       }
-      buttonText="Войти"
-      logText="Ещё не зарегистрированы?"
-      path="/signup"
-      signLink="Регистрация"
-      inputVal={!email.isInputValid || !password.isInputValid}
     />
   );
 };

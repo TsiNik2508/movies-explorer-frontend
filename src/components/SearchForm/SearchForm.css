@@ -1,53 +1,53 @@
 .search-form {
-  padding: 68px 16px 75px;
+  padding: 70px 14px 73px;
   position: relative;
 }
 
 .search-form:after {
-  width: 72%;
-  height: 0.5px;
+  width: calc(100% - 28px);
+  height: 1px;
+  bottom: 9px;
   position: absolute;
   content: '';
-  bottom: 10px;
   background-color: rgba(170, 170, 170, .2);
 }
 
 .search-form__label {
-  margin-bottom: 30px;
+  margin-bottom: 29px;
   display: block;
 }
 
 .search-form__input {
-  padding: 18px 88px 16px 10px;
+  padding: 17px 86px 17px 12px;
   width: 100%;
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: 16px;
   color: #8B8B8B;
-  background-color: transparent;
   box-sizing: border-box;
+  background-color: transparent;
   border: 1.5px solid rgba(170, 170, 170, .2);
-  border-radius: 9px;
+  border-radius: 8px;
 }
 
 .search-form__input::placeholder {
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: 16px;
   color: #8B8B8B;
 }
 
 .search-form__button {
-  position: absolute;
-  text-align: center;
-  top: 73px;
+  top: 76px;
   right: 20px;
-  padding: 14px 19px;
-  font-size: 15px;
+  padding: 13px 18px;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 19px;
-  border-radius: 5px;
-  border: none;
+  line-height: 18px;
   color: #FFF;
   background-color: #4285F4;
+  position: absolute;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
   transition: .5s;
   cursor: pointer;
 }
@@ -57,9 +57,8 @@
 }
 
 .search-form__checkbox-label {
-  width: fit-content;
-  align-items: center;
   display: flex;
+  align-items: center;
   transition: .5s;
   cursor: pointer;
 }
@@ -69,25 +68,25 @@
 }
 
 .search-form__checkbox {
-  width: 34px;
-  height: 22px;
-  background-color: #3ddc84;
-  border-radius: 10px;
+  width: 36px;
+  height: 20px;
   position: relative;
   appearance: none;
+  background-color: #3ddc84;
+  border-radius: 10px;
   transition: .5s;
 }
 
 .search-form__checkbox:after {
-  width: 9px;
-  height: 9px;
-  top: 7px;
-  right: 7px;
+  width: 8px;
+  height: 8px;
+  right: 6px;
+  top: 6px;
   position: absolute;
+  content: '';
   border-radius: 50%;
   background-color: #fff;
   transition: .5s;
-  content: '';
 }
 
 .search-form__checkbox:checked {
@@ -96,20 +95,55 @@
 
 .search-form__checkbox:checked:after {
   background-color: #A0A0A0;
-  transform: translateX(-19px);
+  transform: translateX(-16px);
 }
 
-.search-form__checkbox-title {
-  margin-left: 11px;
-  font-size: 12px;
-  line-height: 20px;
+.search-form__checkbox-text {
+  font-size: 11px;
+  line-height: 18px;
+  margin-left: 13px;
 }
 
-@media screen and (min-width: 1279px) {
+@media screen and (min-width: 768px) {
+  .search-form {
+    padding: 70px 30px 62px;
+  }
+
+  .search-form:after {
+    width: calc(100% - 60px);
+    bottom: 10px;
+  }
+
+  .search-form__label {
+    margin-bottom: 26px;
+  }
+
+  .search-form__input {
+    padding: 24px 115px 25px 25px;
+  }
+  
+  .search-form__input, .search-form__input::placeholder {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .search-form__button {
+    padding: 17px 29px;
+    top: 80px;
+    right: 40px;
+  }
+  
+  .search-form__checkbox-text {
+    margin-left: 14px;
+    font-size: 13px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
   .search-form {
     padding-right: 70px;
-    padding-bottom: 55px;
     padding-left: 70px;
+    padding-bottom: 54px;
   }
 
   .search-form:after {
@@ -118,40 +152,5 @@
 
   .search-form__button {
     right: 80px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .search-form {
-    padding: 70px 30px 60px;
-  }
-
-  .search-form:after {
-    width: calc(100% - 58px);
-    bottom: 9px;
-  }
-
-  .search-form__label {
-    margin-bottom: 25px;
-  }
-
-  .search-form__input {
-    padding: 25px 115px 25px 25px;
-  }
-  
-  .search-form__input, .search-form__input::placeholder {
-    font-size: 19px;
-    line-height: 20px;
-  }
-
-  .search-form__button {
-    padding: 18px 30px;
-    top: 80px;
-    right: 40px;
-  }
-  
-  .search-form__checkbox-title {
-    margin-left: 14px;
-    font-size: 13px;
   }
 }

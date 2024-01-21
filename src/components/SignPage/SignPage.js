@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import logo from "../../images/logo.png";
+
+import logo from "../../images/Logo.svg";
 import "./SignPage.css";
 
 const SignPage = ({
@@ -13,11 +14,11 @@ const SignPage = ({
 }) => {
   return (
     <section className="sign-page">
-      <div className="sign-page__container">
-        <Link to="/" className="sign-page__logo_link">
-          <img className="sign-page__logo" src={logo} alt="Логотп" />
+      <div className="sign-page__title">
+        <Link to="/" className="sign-page__logo-link">
+          <img className="sign-page__logo" src={logo} alt="Логотип" />
         </Link>
-        <h2 className="sign-page__title">{titleText}</h2>
+        <h2 className="sign-page__subtitle">{titleText}</h2>
       </div>
       <form className="sign-page__form">
         {formSign}
@@ -25,8 +26,7 @@ const SignPage = ({
           {buttonText}
         </button>
       </form>
-
-      <p className="sign-page__log">
+      <p className="sign-page__logged">
         {logText}
         <Link className="sign-page__sign-link" to={path}>
           {signLink}

@@ -4,34 +4,34 @@
   list-style: none;
 }
 
-.movies-card-list__roll {
-  margin-bottom: 15px;
+.movies-card-list__item {
+  margin-bottom: 16px;
 }
 
-@media screen and (min-width: 1279px) {
-  .movies-card-list {
-    padding: 70px 70px 10px;
-    grid-template-columns: repeat(3, calc((100% - 66px)/3));
-    gap: 35px;
+@media screen and (min-width: 576px) {
+  .movies-card-list{
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: repeat(2, calc((100% - 10px)/2));
   }
 }
 
 @media screen and (min-width: 768px) {
   .movies-card-list {
     padding: 70px 30px 30px;
-    grid-template-columns: repeat(2, calc((100% - 25px)/2));
-    gap: 35px 25px;
+    gap: 35px 24px;
+    grid-template-columns: repeat(2, calc((100% - 24px)/2));
   }
 
-  .movies-card-list__roll {
+  .movies-card-list__item {
     margin-bottom: 0;
   }
 }
 
-@media screen and (min-width: 767px) {
-  .movies-card-list{
-    display: grid;
-    grid-template-columns: repeat(2, calc((100% - 12px)/2));
-    column-gap: 12px;
+@media screen and (min-width: 1024px) {
+  .movies-card-list {
+    padding: 70px 70px 228px;
+    gap: 32px;
+    grid-template-columns: repeat(3, calc((100% - 64px)/3));
   }
 }

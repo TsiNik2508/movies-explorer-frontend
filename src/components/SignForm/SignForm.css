@@ -1,16 +1,16 @@
-.sign-form__name {
-  margin-bottom: 5px;
-  font-size: 12px;
+.SignForm__name {
   color: #8B8B8B;
+  font-size: 10px;
   line-height: normal;
+  margin-bottom: 5px;
   display: inline-block;
 }
 
-.sign-form__field {
-  padding-bottom: 11px;
-  padding-left: 0;
+.SignForm__field {
   width: 100%;
-  font-size: 15px;
+  padding-bottom: 10px;
+  padding-left: 0;
+  font-size: 14px;
   font-weight: 500;
   line-height: normal;
   color: #FFF;
@@ -19,21 +19,21 @@
   border-bottom: 1px solid #424242;
 }
 
-.sign-form__field::placeholder {
-  font-size: 15px;
+.SignForm__field::placeholder {
+  font-size: 14px;
   font-weight: 500;
   line-height: normal;
   color: #FFF;
   background-color: transparent;
 }
 
-.sign-form__error {
-  font-size: 12px;
-  color: #EE3465;
+.SignForm__error {
+  font-size: 10px;
   line-height: normal;
+  color: #EE3465;
   visibility: hidden;
 }
 
-.sign-form__error_visible {
+.SignForm__error_visible {
   visibility: visible;
 }
