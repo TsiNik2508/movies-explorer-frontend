@@ -4,11 +4,11 @@
   flex-wrap: wrap;
 }
 
-.nav_login {
-  padding-top: 145px;
-  padding-bottom: 50px;
+.nav_logged {
+  padding-top: 144px;
+  padding-bottom: 47px;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   top: 0;
   right: 0;
   bottom: 0;
@@ -21,14 +21,14 @@
   transition: .5s;
 }
 
-.nav_login-open {
+.nav_logged-open {
   transform: translateX(0);
 }
 
 .nav__link {
-  margin-left: 15px;
-  font-size: 12px;
-  line-height: 14px;
+  margin-left: 14px;
+  font-size: 10px;
+  line-height: 16px;
   font-weight: 500;
   color: #FFF;
   text-decoration: none;
@@ -40,34 +40,54 @@
 }
 
 .nav__link_active {
-  border-bottom: 3px solid #fff;
+  border-bottom: 2px solid #fff;
 }
 
 .nav__link_signin {
-  padding: 6px 12px;
+  padding: 5px 12px;
   color: #000;
   background: #3DDC84;
   border-radius: 3px;
 }
 
-.nav__link_logged {
+.nav__link_is-logged {
   margin-left: 0;
-  padding-bottom: 7px;
-  font-size: 19px;
+  padding-bottom: 8px;
+  font-size: 18px;
   text-align: center;
   line-height: normal;
 }
 
-.nav__unlog {
-  margin-right: 10px;
-  width: 22px;
-  height: 21px;
-  position: relative;
-  z-index: 1;
-  transition: .5s;
+.nav__link_is-logged:not(:last-of-type) {
+  margin-bottom: 17px;
 }
 
-.nav__unlog-line {
+.nav__link_profile {
+  margin-top: auto;
+  margin-right: 43px;
+  font-size: 14px;
+  position: relative;
+}
+
+.nav__link_profile:after {
+  margin-left: 13px;
+  width: 30px;
+  height: 30px;
+  content: url('../../images/Profileicon.svg');
+  position: absolute;
+  bottom: 0;
+}
+
+.nav__burger {
+  margin-right: 9px;
+  width: 22px;
+  height: 20px;
+  position: relative;
+  transition: .5s;
+  z-index: 1;
+}
+
+.nav__burger-line {
   width: 22px;
   height: 2px;
   display: block;
@@ -75,76 +95,57 @@
   transition: .5s;
 }
 
-.nav__unlog:before, .nav__unlog:after {
+.nav__burger:before, .nav__burger:after {
   width: 100%;
   height: 2px;
-  background-color: #fff;
-  content: '';
   position: absolute;
+  content: '';
+  background-color: #fff;
   transition: .4s;
 }
 
-.nav__unlog:before {
-  top: 8px;
+.nav__burger:before {
+  top: 9px;
 }
 
-.nav__unlog:after {
-  top: 19px;
+.nav__burger:after {
+  top: 18px;
 }
 
-.nav__unlog_opened {
-  top: 26px;
-  right: 15px;
+.nav__burger_opened {
+  top: 27px;
+  right: 14px;
   position: fixed;
 }
 
-.nav__unlog_opened:before{
+.nav__burger_opened:before{
   left: 5px;
   transform: translateY(-8px) rotateZ(45deg);
 }
 
-.nav__unlog_opened:after {
-  transform: translateY(-17px) rotateZ(-45deg);
+.nav__burger_opened:after {
   left: 5px;
-}
-
-
-.nav__link_logged:not(:last-of-type) {
-  margin-bottom: 16px;
-}
-
-.nav__link_profile {
-  margin-top: auto;
-  margin-right: 42px;
-  position: relative;
-  font-size: 15px;
-}
-
-.nav__link_profile:after {
-  content: url('../../images/Profileicon.svg');
-  margin-left: 12px;
-  width: 30px;
-  height: 30px;
-  bottom: 0;
-  position: absolute;
-  background-color: #0F4157;
+  transform: translateY(-17px) rotateZ(-45deg);
 }
 
 @media screen and (min-width: 768px) {
-
-  .nav_login {
-    max-width: 520px;
-    padding-top: 160px;
-    padding-bottom: 90px;
-  }
-
   .nav__link {
     margin-left: 30px;
-    font-size: 13px;
+    font-size: 12px;
+  }
+
+  .nav__link_is-logged {
+    margin-left: 0;
+    padding-bottom: 6px;
+    font-size: 18px;
+  }
+
+  .nav__link_is-logged:not(:last-of-type) {
+    margin-bottom: 22px;
   }
 
   .nav__link_profile {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .nav__link_signin {
@@ -153,73 +154,73 @@
     border-radius: 3px;
   }
 
-  .nav__link_logged {
-    margin-left: 0;
-    padding-bottom: 6px;
-    font-size: 17px;
-  }
-
-  .nav__link_logged:not(:last-of-type) {
-    margin-bottom: 20px;
+  .nav_logged {
+    padding-top: 159px;
+    padding-bottom: 92px;
+    max-width: 520px;
   }
 
   .nav-wrap_cover:before {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     bottom: 0;
     right: 0;
     position: fixed;
     background-color: #000;
-    content: '';
     opacity: .3;
     z-index: 1;
+    content: '';
   }
   
-  .nav__unlog, .nav__unlog-line {
-    width: 24px;
+  .nav__burger, .nav__burger-line {
+    width: 26px;
   }
   
-  .nav__unlog:before, .nav__unlog:after {
+  .nav__burger:before, .nav__burger:after {
     height: 3px;
   }
   
-  .nav__unlog:after {
+  .nav__burger:after {
     top: 19px;
   }
 
-  .nav__unlog_opened {
-    width: 23px;
+  .nav__burger_opened {
+    width: 22px;
     right: 30px;
   }
   
-  .nav__unlog_opened:before{
-    left: 13px;
+  .nav__burger_opened:before{
+    left: 12px;
     transform: translateY(1px) rotateZ(45deg);
   }
   
-  .nav__unlog_opened:after {
+  .nav__burger_opened:after {
     left: 12px;
     transform: translateY(-9px) rotateZ(-45deg);
   }
 }
 
-@media screen and (min-width: 1279px) {
-  .nav_login {
-    padding: 0;
-    min-height: unset;
-    flex-direction: row;
-    transform: none;
-    width: unset;
-    position: static;
+@media screen and (min-width: 1024px) {
+  .nav-wrap_cover:before {
+    display: none;
   }
 
-  .nav_login-main {
+  .nav_logged {
+    padding: 0;
+    width: unset;
+    min-height: unset;
+    flex-direction: row;
+    position: static;
+    transform: none;
+  }
+
+  .nav_logged-main {
     background-color: transparent;
   }
 
   .nav__link {
     margin-left: 30px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
   }
 
@@ -228,25 +229,17 @@
     border-bottom: none;
   }
 
-  .nav-wrap_cover:before {
-    display: none;
-  }
-
-  .nav__link_main {
-    display: none;
-  }
-
-  .nav__link_logged{
+  .nav__link_is-logged{
     padding-bottom: 0;
     font-size: 14px;
-    line-height: 17px;
+    line-height: 18px;
   }
 
-  .nav__link_logged:nth-child(3) {
+  .nav__link_is-logged:nth-child(3) {
     margin-right: 20px;
   }
 
-  .nav__link_logged:not(:last-of-type) {
+  .nav__link_is-logged:not(:last-of-type) {
     margin-bottom: 0;
     margin-left: 20px;
   }
@@ -255,13 +248,17 @@
     bottom: -5px;
   }
 
+  .nav__link_main {
+    display: none;
+  }
+
   .nav__link_signin {
     padding: 8px 21px;
     border-radius: 3px;
     background: #3DDC84;
   }
 
-  .nav__unlog {
+  .nav__burger {
     display: none;
   }
 }

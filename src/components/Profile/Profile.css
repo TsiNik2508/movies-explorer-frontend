@@ -107,7 +107,7 @@
 
 .profile-form__error-message {
   margin-top: auto;
-  margin-bottom: 20px;
+  margin-bottom: 346px;
   font-size: 11px;
   text-align: center;
   color: #FF004C;
@@ -164,8 +164,13 @@
   }
 
   .profile__button {
-    font-size: 18px;
+    font-size: 14px;
   }
+
+  .profile-form__error-message {
+    margin-bottom: 10px;
+  }
+
 }
 
 @media screen and (min-width: 1280px) {
@@ -175,6 +180,6 @@
   }
 
   .profile-form__label:last-of-type {
-    margin-bottom: 170px;
+    margin-bottom: 166px;
   }
 }

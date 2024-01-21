@@ -62,12 +62,13 @@
 
 @media screen and (min-width: 1024px) {
   .portfolio {
-    padding: 0 70px 125px;
+    padding: 0 70px 128px;
   }
 
   .portfolio__title {
     font-size: 18px;
     color: #8B8B8B;
+    margin-bottom: 36px;
   }
 
   .portfolio__link {

@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./Navigation.css";
 
 const Navigation = ({ isLoggedIn }) => {
-  let [isLoginOpen, setIsLoginOpen] = useState(false);
+  let [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
   const mainMatch = useMatch("/");
   const moviesMatch = useMatch("/movies");
@@ -12,28 +12,28 @@ const Navigation = ({ isLoggedIn }) => {
 
   const { pathname } = useLocation();
 
-  function toggleUnlogState() {
-    setIsLoginOpen(!isLoginOpen);
+  function toggleBurgerState() {
+    setIsBurgerMenuOpen(!isBurgerMenuOpen);
   }
 
   function handleCloseOverlay(e) {
     if (!e.target.classList.contains("nav")) {
-      toggleUnlogState();
+      toggleBurgerState();
     }
   }
 
   return isLoggedIn ? (
     <div
       onClick={handleCloseOverlay}
-      className={`nav-wrap ${isLoginOpen ? "nav_cover" : ""}`}
+      className={`nav-wrap ${isBurgerMenuOpen ? "nav-wrap_cover" : ""}`}
     >
       <nav
-        className={`nav nav_login
-        ${isLoginOpen ? "nav_login-open" : ""}
-        ${pathname !== "/" ? "" : "nav_login-main"}`}
+        className={`nav nav_logged
+        ${isBurgerMenuOpen ? "nav_logged-open" : ""}
+        ${pathname !== "/" ? "" : "nav_logged-main"}`}
       >
         <NavLink
-          className={`nav__link nav__link_logged nav__link_main ${
+          className={`nav__link nav__link_is-logged nav__link_main ${
             mainMatch && "nav__link_active"
           }`}
           to="/"
@@ -41,7 +41,7 @@ const Navigation = ({ isLoggedIn }) => {
           Главная
         </NavLink>
         <NavLink
-          className={`nav__link nav__link_logged ${
+          className={`nav__link nav__link_is-logged ${
             moviesMatch && "nav__link_active"
           }`}
           to="/movies"
@@ -49,7 +49,7 @@ const Navigation = ({ isLoggedIn }) => {
           Фильмы
         </NavLink>
         <NavLink
-          className={`nav__link nav__link_logged ${
+          className={`nav__link nav__link_is-logged ${
             savedMoviesMatch && "nav__link_active"
           }`}
           to="/saved-movies"
@@ -57,7 +57,7 @@ const Navigation = ({ isLoggedIn }) => {
           Сохранённые фильмы
         </NavLink>
         <NavLink
-          className={`nav__link nav__link_logged nav__link_profile ${
+          className={`nav__link nav__link_is-logged nav__link_profile ${
             profileMatch && "nav__link_active"
           }`}
           to="/profile"
@@ -66,12 +66,12 @@ const Navigation = ({ isLoggedIn }) => {
         </NavLink>
       </nav>
       <div
-        onClick={toggleUnlogState}
-        className={`nav__unlog ${
-          isLoginOpen ? "nav__unlog_opened" : ""
+        onClick={toggleBurgerState}
+        className={`nav__burger ${
+          isBurgerMenuOpen ? "nav__burger_opened" : ""
         }`}
       >
-        {!isLoginOpen ? <span className="nav__unlog-line"></span> : <></>}
+        {!isBurgerMenuOpen ? <span className="nav__burger-line"></span> : <></>}
       </div>
     </div>
   ) : (
