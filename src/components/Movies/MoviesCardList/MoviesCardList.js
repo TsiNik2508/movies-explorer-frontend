@@ -1,75 +1,101 @@
-import React, { useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import MoviesCard from "../MovieCard/MovieCard";
-import More from "./Utils/Utils";
+import More from "./More/More";
 import "./MoviesCardList.css";
-import MovieImg from '../../../images/Movie.png';
 
-const MoviesCardList = () => {
-  const [shownMovies, setShownMovies] = useState(12);
-  const [moviesToAdd, setMoviesToAdd] = useState(3);
-  const [loadIndex, setLoadIndex] = useState(shownMovies);
-
+const MoviesCardList = ({
+  isSaved,
+  moviesArray,
+  saveMoviesArray,
+  nothingFound,
+  onSaveMovie,
+  deleteMovie,
+}) => {
+  const [shownMovies, setShownMovies] = useState(0);
+  const [moviesToAdd, setMoviesToAdd] = useState(0);
+  const [width, setWidth] = useState(window.innerWidth);
   const location = useLocation();
 
-  const resizeWindow = () => {
-    if (window.innerWidth >= 1024) {
-      setShownMovies(12);
-      setMoviesToAdd(3);
-    } else if (window.innerWidth >= 768) {
-      setShownMovies(8);
-      setMoviesToAdd(2);
-    } else {
-      setShownMovies(5);
-      setMoviesToAdd(2);
-    }
-  };
-
   useEffect(() => {
-    resizeWindow();
-
-    const handleResize = () => {
-      setTimeout(() => {
-        resizeWindow();
-        setLoadIndex(shownMovies);
-      }, 100);
+    const resizeWindow = () => {
+      setWidth(window.innerWidth);
     };
 
-    window.addEventListener("resize", handleResize);
+    if (location.pathname === "/movies") {
+      if (width >= 1024) {
+        setShownMovies(12);
+        setMoviesToAdd(3);
+      } else if (width >= 576) {
+        setShownMovies(8);
+        setMoviesToAdd(2);
+      } else {
+        setShownMovies(5);
+        setMoviesToAdd(2);
+      }
+    }
+
+    window.addEventListener("resize", resizeWindow);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", resizeWindow);
     };
-  }, [shownMovies]);
+  }, [window.innerWidth, location, moviesArray]);
 
   function showMore() {
-    if (loadIndex < moviesArray.length) {
-      setLoadIndex(loadIndex + moviesToAdd);
-    }
+    setShownMovies((shownMovies) => shownMovies + moviesToAdd);
   }
 
-  const moviesArray = Array.from({ length: 8 }, () => ({
-    name: 'В погоне за Бенкси',
-    duration: '0ч 45мин',
-    thumbnail: MovieImg,
-  }));
-
-  const savedMovies = location.pathname === "/saved-movies" ? moviesArray.slice(0, 3) : moviesArray;
-
   return (
-    <div>
-      <ul className="movies-card-list">
-        {savedMovies.slice(0, loadIndex).map((movie, index) => (
-          <li className="movies-card-list__item" key={index}>
-            <MoviesCard
-              title={movie.name}
-              duration={movie.duration}
-              thumbnail={movie.thumbnail}
-            />
-          </li>
+    <Fragment>
+      {location.pathname === "/saved-movies" &&
+        (saveMoviesArray.length ? (
+          <ul className="movies-card-list">
+            {saveMoviesArray.map((saveMovie) => {
+              return (
+                <li className="movies-card-list__item" key={saveMovie._id}>
+                  <MoviesCard
+                    movie={saveMovie}
+                    onChangeMovieSave={deleteMovie}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          nothingFound && (
+            <p className="movies-card-list__error">
+              Ничего не найдено
+            </p>
+          )
         ))}
-      </ul>
-      {loadIndex < savedMovies.length && <More showMore={showMore} />}
-    </div>
+
+      {location.pathname === "/movies" && (
+        <Fragment>
+          {moviesArray.length ? (
+            <ul className="movies-card-list">
+              {moviesArray.slice(0, shownMovies).map((searchedMovie) => {
+                return (
+                  <li className="movies-card-list__item" key={searchedMovie.id}>
+                    <MoviesCard
+                      movie={searchedMovie}
+                      onChangeMovieSave={onSaveMovie}
+                      isSaved={isSaved}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            nothingFound && (
+              <p className="movies-card-list__error">
+                Ничего не найдено
+              </p>
+            )
+          )}
+          {shownMovies < moviesArray.length && <More showMore={showMore} />}
+        </Fragment>
+      )}
+    </Fragment>
   );
 };
 

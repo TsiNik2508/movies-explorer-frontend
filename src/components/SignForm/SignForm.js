@@ -1,7 +1,6 @@
 import "./SignForm.css";
 
 const SignForm = ({
-  onBlur,
   onChange,
   value,
   inputName,
@@ -19,14 +18,13 @@ const SignForm = ({
         name={type}
         placeholder={placeholder}
         onChange={onChange}
-        onBlur={onBlur}
       ></input>
       <span
         className={`SignForm__error ${
           isVisible ? "SignForm__error_visible" : ""
         }`}
       >
-        Что-то пошло не так...
+        Некорректный формат данных...
       </span>
     </label>
   );

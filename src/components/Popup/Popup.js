@@ -6,7 +6,7 @@ const Popup = ({ isOpen, onClose, overlayClickClose, errorMessage }) => {
       className={`popup ${isOpen ? "popup_opened" : ""}`}
       onMouseDown={overlayClickClose}
     >
-      <div className="popup__container popup__container_infotool">
+      <div className="popup__container popup__container_type_infotool">
         <button
           onClick={onClose}
           aria-label="Закрыт"

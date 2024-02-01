@@ -1,32 +1,79 @@
-import { useState } from "react";
-import useInput from "../Utils/validation";
+import { useState, useContext, useEffect } from "react";
+import { CurrentUserContext } from "../context/CurrentUserContext";
+import useInput from "../utils/validation/validation";
+
 import "./Profile.css";
 
-const Profile = ({ onSignout }) => {
+const Profile = ({ onSignout, onUpdate }) => {
+  const currentUser = useContext(CurrentUserContext);
+
+  const userName = useInput(currentUser.name, {
+    minLength: 2,
+    maxLength: 30,
+    isEmpty: true,
+  });
+  const email = useInput(currentUser.email, { isEmpty: true, isEmail: true });
+
+  const [formValue, setFormValue] = useState({
+    name: currentUser.name,
+    email: currentUser.email,
+  });
+  const [isValid, setIsValid] = useState(false);
   const [isLocked, setIsLocked] = useState(true);
 
-  const userName = useInput("", { isEmpty: true, minLength: 2, maxLength: 30 });
-  const email = useInput("", { isEmpty: true, isEmail: true });
+  useEffect(() => {
+    if (
+      (currentUser.email !== email.value && email.isInputValid) ||
+      (currentUser.name !== userName.value && userName.isInputValid)
+    ) {
+      setIsValid(true);
+    } else setIsValid(false);
+  }, [email, userName, currentUser]);
+
+  useEffect(() => {
+    setFormValue({ name: currentUser.name, email: currentUser.email });
+  }, [currentUser, isLocked]);
 
   function handleChangeProfile() {
     setIsLocked(!isLocked);
   }
 
+  function onUpdateProfile(formValue) {
+    onUpdate(formValue);
+    setIsLocked(!isLocked);
+  }
+
+  function handleSubmitUpdateProfile(e) {
+    e.preventDefault();
+    onUpdateProfile(formValue);
+  }
+
+  function handleChangeName(e) {
+    setFormValue({ ...formValue, name: e.target.value });
+    userName.onChange(e);
+  }
+
+  function handleChangeEmail(e) {
+    setFormValue({ ...formValue, email: e.target.value });
+    email.onChange(e);
+  }
+
   return (
     <section className="profile">
-      <form className="profile-form">
-        <h2 className="profile-form__title">Привет, Виталий!</h2>
+      <form onSubmit={handleSubmitUpdateProfile} className="profile-form">
+        <h2 className="profile-form__title">{`Привет, ${
+          currentUser.name
+        }!`}</h2>
         <label className="profile-form__label">
           <span className="profile-form__input-name">Имя</span>
           <input
             className="profile-form__input"
             name="name"
             type="text"
-            placeholder="Виталий"
-            value={userName.value}
+            placeholder="Имя"
+            value={formValue.name}
             disabled={isLocked && "disabled"}
-            onChange={(e) => userName.onChange(e)}
-            onBlur={(e) => userName.onBlur(e)}
+            onChange={handleChangeName}
             required
           ></input>
           <span
@@ -39,7 +86,7 @@ const Profile = ({ onSignout }) => {
                 : ""
             }`}
           >
-            Что-то пошло не так...
+            Имя должно содержать не меньше 2 символов.
           </span>
         </label>
         <label className="profile-form__label">
@@ -48,11 +95,10 @@ const Profile = ({ onSignout }) => {
             className="profile-form__input"
             name="email"
             type="email"
-            placeholder="pochta@yandex.ru"
-            value={email.value}
+            placeholder="E-mail"
+            value={formValue.email}
             disabled={isLocked && "disabled"}
-            onChange={(e) => email.onChange(e)}
-            onBlur={(e) => email.onBlur(e)}
+            onChange={handleChangeEmail}
             required
           ></input>
           <span
@@ -62,7 +108,7 @@ const Profile = ({ onSignout }) => {
                 : ""
             }`}
           >
-            Что-то пошло не так...
+            Неверный формат E-mail.
           </span>
         </label>
         <p className="profile-form__error-message">
@@ -72,7 +118,7 @@ const Profile = ({ onSignout }) => {
           className={`profile-form__button ${
             !isLocked ? "profile-form__button_visible" : ""
           }`}
-          disabled={(!email.isInputValid || !userName.isInputValid) && "disabled"}
+          disabled={!isValid && "disabled"}
         >
           Сохранить
         </button>

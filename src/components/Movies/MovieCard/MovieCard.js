@@ -1,52 +1,65 @@
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
 
 import "./MovieCard.css";
 
-const MoviesCard = ({ title, duration, thumbnail }) => {
+
+
+const MoviesCard = ({ movie, onChangeMovieSave, isSaved }) => {
   const { pathname } = useLocation();
 
-  const [isSaved, setIsSaved] = useState(false);
   let buttnText;
 
-  function toggleSavingMovie() {
-    setIsSaved(!isSaved);
+  function handleToggleSavingMovie() {
+    if (typeof onChangeMovieSave === "function") {
+      onChangeMovieSave(pathname === "/saved-movies" ? movie._id : movie);
+    } else {
+    }
   }
 
   if (pathname === "/saved-movies") {
     buttnText = "×";
+    movie.thumbnail = `${"https://api.nomoreparties.co"}/uploads/thumbnail_${
+      movie.image.split(
+        `${"https://api.nomoreparties.co"}/beatfilm-movies/uploads/`
+      )[1]
+    }`;
+
   } else if (pathname === "/movies") {
-    isSaved ? (buttnText = "✓") : (buttnText = "Сохранить");
+    isSaved(movie) ? (buttnText = "✓") : (buttnText = "Сохранить");
+    movie.thumbnail =
+      "https://api.nomoreparties.co" + movie.image.formats.thumbnail.url;
   }
 
   function movieTime() {
-    if (!duration || typeof duration !== 'string') {
-      return 'Некорректный формат времени';
-    }
-  
-    const timeArray = duration.split(' ');
-    if (timeArray.length !== 2) {
-      return 'Некорректный формат времени';
-    }
-  
-    const hours = parseInt(timeArray[0], 10) || 0;
-    const minutes = parseInt(timeArray[1], 10) || 0;
-  
+    const hours = Math.floor(movie.duration / 60);
+    const minutes = movie.duration % 60;
     return hours + "ч " + minutes + "м";
   }
-  
 
   return (
     <article className="movie-card">
       <div className="movie-card__container">
-        <h3 className="movie-card__title">{title}</h3>
+        <h3 className="movie-card__title">{movie.nameRU}</h3>
         <span className="movie-card__duration">{movieTime()}</span>
       </div>
-      <img className="movie-card__image" src={thumbnail} alt={title} />
+      <a
+        className="movie-card__link"
+        href={movie.trailerLink}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img
+          className="movie-card__image"
+          src={movie.thumbnail}
+          alt={movie.nameRU}
+        />
+      </a>
       <button
-        onClick={toggleSavingMovie}
+        onClick={handleToggleSavingMovie}
         className={`movie-card__button ${
-          isSaved && pathname === "/movies" ? "movie-card__button_saved" : ""
+          pathname === "/movies" && isSaved(movie)
+            ? "movie-card__button_saved"
+            : ""
         }`}
       >
         {buttnText}

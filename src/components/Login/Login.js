@@ -1,11 +1,20 @@
-import React from "react";
 import SignForm from "../SignForm/SignForm";
 import SignPage from "../SignPage/SignPage";
-import useInput from "../Utils/validation";
+import useInput from "../utils/validation/validation";
 
-const Login = () => {
+const Login = ({ onSignin, isLockedButton }) => {
   const email = useInput("", { isEmpty: true, isEmail: true });
   const password = useInput("", { isEmpty: true });
+
+  const formLoginValues = {
+    email: email.value,
+    password: password.value,
+  };
+
+  const handleSubmitSignin = (e) => {
+    e.preventDefault();
+    onSignin(formLoginValues);
+  };
 
   return (
     <SignPage
@@ -15,29 +24,26 @@ const Login = () => {
       path="/signup"
       signLink="Регистрация"
       inputVal={!email.isInputValid || !password.isInputValid}
-      formSign={
-        <>
-          <SignForm
-            inputName="E-mail"
-            type="email"
-            placeholder="E-mail"
-            value={email.value}
-            isVisible={email.isDirty && (email.isEmpty || email.isEmail)}
-            onChange={(e) => email.onChange(e)}
-            onBlur={(e) => email.onBlur(e)}
-          />
-          <SignForm
-            inputName="Пароль"
-            type="password"
-            value={password.value}
-            placeholder="password"
-            isVisible={password.isDirty && password.isEmpty}
-            onChange={(e) => password.onChange(e)}
-            onBlur={(e) => password.onBlur(e)}
-          />
-        </>
-      }
-    />
+      isLockedButton={isLockedButton}
+      onSubmit={handleSubmitSignin}
+    >
+      <SignForm
+        inputName="E-mail"
+        type="email"
+        placeholder="Ваш E-mail"
+        value={email.value}
+        isVisible={email.isDirty && (email.isEmpty || email.isEmail)}
+        onChange={(e) => email.onChange(e)}
+      />
+      <SignForm
+        inputName="Пароль"
+        type="password"
+        value={password.value}
+        placeholder="password"
+        isVisible={password.isDirty && password.isEmpty}
+        onChange={(e) => password.onChange(e)}
+      />
+    </SignPage>
   );
 };
 

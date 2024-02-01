@@ -1,4 +1,4 @@
-import "../Utils/Utils.css";
+import "./More.css";
 
 const More = ({ showMore }) => {
   return (

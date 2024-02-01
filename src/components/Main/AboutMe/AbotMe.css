@@ -1,4 +1,6 @@
-.about-me{
+.about-me {
+  max-width: 1140px;
+  margin: 0 auto;
   padding: 70px 14px;
 }
 
@@ -41,15 +43,19 @@
 }
 
 .about-me__description {
-  margin-top: 20px;
+  margin-top: 7px;
   margin-bottom: 0;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 16px;
 }
 
-.about-me__about:nth-of-type(2) {
-  font-weight: 400;
+.about-me__description:first-of-type {
+  font-weight: 500;
+}
+
+.about-me__description:last-of-type {
+  margin-bottom: 10px;
 }
 
 .about-me__link {
@@ -139,6 +145,12 @@
     letter-spacing: -2px;
   }
 
+  .about-me__description {
+    max-width: 600px;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
   .about-me__description:first-of-type {
     margin-top: 19px;
     font-size: 18px;
@@ -147,8 +159,5 @@
 
   .about-me__description:nth-of-type(2) {
     margin-top: 25px;
-    max-width: 599px;
-    font-size: 14px;
-    line-height: 22px;
   }
 }
