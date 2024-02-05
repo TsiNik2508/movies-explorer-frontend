@@ -1,23 +1,21 @@
 import { useState, useContext, useEffect } from "react";
-import { CurrentUserContext } from "../context/CurrentUserContext";
-import useInput from "../utils/validation/validation";
-import MainApi from "../utils/api/MainApi"; 
+import { CurrentUserContext } from "../../context/CurrentUserContext";
+import useInput from "../../utils/validation/validation";
 
 import "./Profile.css";
 
-const Profile = ({ onSignout }) => {
+const Profile = ({ onSignout, onUpdate }) => {
   const currentUser = useContext(CurrentUserContext);
-  const setCurrentUser = useContext(CurrentUserContext)[1];
-
-  // Состояния для имени, почти, их валидации
+  // Состояние для ввода имени пользователя с валидацией
   const userName = useInput(currentUser.name, {
     minLength: 2,
     maxLength: 30,
     isEmpty: true,
   });
+  // Состояние для ввода электронной почты с валидацией
   const email = useInput(currentUser.email, { isEmpty: true, isEmail: true });
 
-  // Состояни для формы и блокировки редактирования
+  // Состояние формы и блокировки редактирования
   const [formValue, setFormValue] = useState({
     name: currentUser.name,
     email: currentUser.email,
@@ -25,50 +23,49 @@ const Profile = ({ onSignout }) => {
   const [isValid, setIsValid] = useState(false);
   const [isLocked, setIsLocked] = useState(true);
 
-  const apiMain = new MainApi();
-
   useEffect(() => {
     // Обновление формы при изменении данных текущего пользователя
     setFormValue({ name: currentUser.name, email: currentUser.email });
   }, [currentUser, isLocked]);
 
+  useEffect(() => {
+    // Проверка валидности данных при изменении состояний ввода
+    if (
+      (currentUser.email !== email.value && email.isInputValid) ||
+      (currentUser.name !== userName.value && userName.isInputValid)
+    ) {
+      setIsValid(true);
+    } else setIsValid(false);
+  }, [email, userName, currentUser]);
+
   // Обработчик изменения профиля
   function handleChangeProfile() {
-    setIsLocked(!isLocked); // Переключени редактирования
+    setIsLocked(!isLocked);
   }
 
-  // Обновление профиля
-  function onUpdateProfile() {
-    apiMain
-      .updateUser(formValue)
-      .then((res) => {
-        setIsLocked(!isLocked);
-        // Обновление данных текущего пользователя
-        setCurrentUser({ ...currentUser, name: formValue.name, email: formValue.email });
-      })
-      .catch(() => {
-        setIsLocked(true); // Заблокировать форму при ошибке
-      });
+  // Функция для обновления профиля
+  function onUpdateProfile(formValue) {
+    onUpdate(formValue); // Вызов функции обновления профиля
+    setIsLocked(!isLocked); // Переключение блокировки редактирования
   }
 
-  // Обработчик отправки формы обновления
+  // Обработчик отправки формы обновления профиля
   function handleSubmitUpdateProfile(e) {
     e.preventDefault();
-    onUpdateProfile();
+    onUpdateProfile(formValue); // Вызов функции обновления профиля
   }
 
+  // Обработчики изменения имени и электронной почты
   function handleChangeName(e) {
     setFormValue({ ...formValue, name: e.target.value });
-    userName.onChange(e);
-    setIsValid(email.isInputValid && !email.isEmpty && userName.isInputValid && !userName.isEmpty);
+    userName.onChange(e); // Вызов функции обработки имени
   }
-  
+
   function handleChangeEmail(e) {
     setFormValue({ ...formValue, email: e.target.value });
-    email.onChange(e);
-    setIsValid(email.isInputValid && !email.isEmpty && userName.isInputValid && !userName.isEmpty);
+    email.onChange(e); // Вызов функции обработки электронной почты
   }
-  
+
   return (
     <section className="profile">
       <form onSubmit={handleSubmitUpdateProfile} className="profile-form">
@@ -138,7 +135,10 @@ const Profile = ({ onSignout }) => {
         <button onClick={handleChangeProfile} className="profile__button">
           Редактировать
         </button>
-        <button onClick={onSignout} className="profile__button profile__button_logout">
+        <button
+          onClick={onSignout}
+          className="profile__button profile__button_logout"
+        >
           Выйти из аккаунта
         </button>
       </div>

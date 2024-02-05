@@ -1,39 +1,32 @@
+import React from "react";
 import { useLocation } from "react-router-dom";
+import { API_MOVIES_LINK } from "../../../utils/constans/constans";
 
 import "./MovieCard.css";
-
-
 
 const MoviesCard = ({ movie, onChangeMovieSave, isSaved }) => {
   const { pathname } = useLocation();
 
-  let buttnText;
+  let buttonText;
 
   function handleToggleSavingMovie() {
     if (typeof onChangeMovieSave === "function") {
       onChangeMovieSave(pathname === "/saved-movies" ? movie._id : movie);
-    } else {
     }
   }
 
   if (pathname === "/saved-movies") {
-    buttnText = "×";
-    movie.thumbnail = `${"https://api.nomoreparties.co"}/uploads/thumbnail_${
-      movie.image.split(
-        `${"https://api.nomoreparties.co"}/beatfilm-movies/uploads/`
-      )[1]
-    }`;
-
+    buttonText = "×";
+    movie.thumbnail = `${API_MOVIES_LINK}/uploads/thumbnail_${movie.image.split(`${API_MOVIES_LINK}/beatfilm-movies/uploads/`)[1]}`;
   } else if (pathname === "/movies") {
-    isSaved(movie) ? (buttnText = "✓") : (buttnText = "Сохранить");
-    movie.thumbnail =
-      "https://api.nomoreparties.co" + movie.image.formats.thumbnail.url;
+    buttonText = isSaved(movie) ? "✓" : "Сохранить";
+    movie.thumbnail = `${API_MOVIES_LINK}${movie.image.formats.thumbnail.url}`;
   }
 
   function movieTime() {
     const hours = Math.floor(movie.duration / 60);
     const minutes = movie.duration % 60;
-    return hours + "ч " + minutes + "м";
+    return `${hours}ч ${minutes}м`;
   }
 
   return (
@@ -62,7 +55,7 @@ const MoviesCard = ({ movie, onChangeMovieSave, isSaved }) => {
             : ""
         }`}
       >
-        {buttnText}
+        {buttonText}
       </button>
     </article>
   );

@@ -1,10 +1,12 @@
+import { MAIN_API_LINK, API_LINK } from "../constans/constans";
+
 export default class MainApi {
   constructor() {
-    this._link = 'https://movie.tsinik.api.nomoredomainsmonster.ru/';
+    this._link = MAIN_API_LINK;
     this._headers = {
       "Content-Type": "application/json",
     };
-    this._movieUrl = 'https://api.nomoreparties.co/beatfilm-movies';
+    this._movieUrl = API_LINK ;
   }
 
   _checkResult(res) {

@@ -1,8 +1,8 @@
 import SearchForm from "../SearchForm/SearchForm";
-import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
 const SaveMovies = ({
-  notFound,
+  nothingFound,
   onChooseShortMovies,
   savedShortMoviesCheck,
   saveMoviesArray,
@@ -18,7 +18,7 @@ const SaveMovies = ({
       />
       <MoviesCardList
         deleteMovie={deleteMovie}
-        notFound={notFound}
+        nothingFound={nothingFound}
         saveMoviesArray={saveMoviesArray}
       />
     </section>

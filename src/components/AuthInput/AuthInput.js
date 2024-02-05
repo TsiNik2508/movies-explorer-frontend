@@ -1,6 +1,6 @@
-import "./SignForm.css";
+import "./AuthInput.css";
 
-const SignForm = ({
+const AuthInput = ({
   onChange,
   value,
   inputName,
@@ -9,10 +9,10 @@ const SignForm = ({
   isVisible,
 }) => {
   return (
-    <label className="SignForm">
-      <span className="SignForm__name">{inputName}</span>
+    <label className="AuthInput">
+      <span className="AuthInput__name">{inputName}</span>
       <input
-        className="SignForm__field"
+        className="AuthInput__field"
         value={value}
         type={type}
         name={type}
@@ -20,8 +20,8 @@ const SignForm = ({
         onChange={onChange}
       ></input>
       <span
-        className={`SignForm__error ${
-          isVisible ? "SignForm__error_visible" : ""
+        className={`AuthInput__error ${
+          isVisible ? "AuthInput__error_visible" : ""
         }`}
       >
         Некорректный формат данных...
@@ -30,4 +30,4 @@ const SignForm = ({
   );
 };
 
-export default SignForm;
+export default AuthInput;

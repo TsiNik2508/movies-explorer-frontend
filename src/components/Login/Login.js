@@ -1,6 +1,6 @@
-import SignForm from "../SignForm/SignForm";
+import AuthInput from "../AuthInput/AuthInput";
 import SignPage from "../SignPage/SignPage";
-import useInput from "../utils/validation/validation";
+import useInput from "../../utils/validation/validation";
 
 const Login = ({ onSignin, isLockedButton }) => {
   const email = useInput("", { isEmpty: true, isEmail: true });
@@ -27,7 +27,7 @@ const Login = ({ onSignin, isLockedButton }) => {
       isLockedButton={isLockedButton}
       onSubmit={handleSubmitSignin}
     >
-      <SignForm
+      <AuthInput
         inputName="E-mail"
         type="email"
         placeholder="Ваш E-mail"
@@ -35,7 +35,7 @@ const Login = ({ onSignin, isLockedButton }) => {
         isVisible={email.isDirty && (email.isEmpty || email.isEmail)}
         onChange={(e) => email.onChange(e)}
       />
-      <SignForm
+      <AuthInput
         inputName="Пароль"
         type="password"
         value={password.value}

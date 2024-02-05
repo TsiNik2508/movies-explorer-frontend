@@ -57,6 +57,7 @@
 }
 
 .search-form__checkbox-label {
+  width: fit-content;
   display: flex;
   align-items: center;
   transition: .5s;
@@ -72,7 +73,7 @@
   height: 20px;
   position: relative;
   appearance: none;
-  background-color: #3ddc84;
+  background-color: #343434;
   border-radius: 10px;
   transition: .5s;
 }
@@ -80,8 +81,9 @@
 .search-form__checkbox:after {
   width: 8px;
   height: 8px;
-  right: 6px;
+right: 6px;
   top: 6px;
+  left: 6px;
   position: absolute;
   content: '';
   border-radius: 50%;
@@ -90,12 +92,12 @@
 }
 
 .search-form__checkbox:checked {
-  background-color: #343434;
+  background-color: #3ddc84;
 }
 
 .search-form__checkbox:checked:after {
-  background-color: #A0A0A0;
-  transform: translateX(-16px);
+  background-color: #fff;
+  transform: translateX(16px);
 }
 
 .search-form__checkbox-text {

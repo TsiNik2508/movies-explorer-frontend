@@ -1,6 +1,8 @@
+import { API_LINK } from "../constans/constans";
+
 export default class MoviesApi {
   constructor() {
-    this._link = 'https://api.nomoreparties.co/beatfilm-movies';
+    this._link = API_LINK;
     this._headers = {
       "Content-Type": "application/json",
     };

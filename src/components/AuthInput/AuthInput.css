@@ -1,4 +1,4 @@
-.SignForm__name {
+.AuthInput__name {
   color: #8B8B8B;
   font-size: 10px;
   line-height: normal;
@@ -6,7 +6,7 @@
   display: inline-block;
 }
 
-.SignForm__field {
+.AuthInput__field {
   width: 100%;
   padding-bottom: 10px;
   padding-left: 0;
@@ -19,7 +19,7 @@
   border-bottom: 1px solid #424242;
 }
 
-.SignForm__field::placeholder {
+.AuthInput__field::placeholder {
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
@@ -27,13 +27,13 @@
   background-color: transparent;
 }
 
-.SignForm__error {
+.AuthInput__error {
   font-size: 10px;
   line-height: normal;
   color: #EE3465;
   visibility: hidden;
 }
 
-.SignForm__error_visible {
+.AuthInput__error_visible {
   visibility: visible;
 }
