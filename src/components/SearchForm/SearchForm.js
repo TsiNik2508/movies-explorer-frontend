@@ -3,7 +3,7 @@ import "./SearchForm.css";
 import { useLocation } from "react-router-dom";
 
 const SearchForm = ({
-  shortMoviesCheck,
+  shortMovieCheck,
   onSearchMovie,
   onChooseShortMovies,
 }) => {
@@ -60,7 +60,7 @@ const SearchForm = ({
           className="search-form__checkbox"
           id="search-form-checkbox"
           onChange={handleChooseMovieDuration}
-          checked={shortMoviesCheck && "checked"}
+          checked={shortMovieCheck && "checked"}
           name="checkbox"
           type="checkbox"
         ></input>

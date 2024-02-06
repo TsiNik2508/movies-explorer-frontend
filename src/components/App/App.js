@@ -15,13 +15,14 @@ import Api from "../../utils/api/MoviesApi";
 import MainApi from "../../utils/api/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
-import {
-  DEFAULT_MOVIE_DURATION,
-} from "../../utils/constans/constans";
+import { DEFAULT_MOVIE_DURATION } from "../../utils/constans/constans";
 
 import { moviesApi, mainApi } from "../../utils/constans/apiConstans";
 
-import { UNAUTHORIZED_ERROR, CONFLICT_ERROR } from "../../utils/constans/errors";
+import {
+  UNAUTHORIZED_ERROR,
+  CONFLICT_ERROR,
+} from "../../utils/constans/errors";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -65,16 +66,14 @@ function App() {
           navigate("/", { replace: true });
         });
     }
-    
+
     // Проверка сохраненных фильтров для короткометражек
-    const savedShortMoviesCheck = localStorage.getItem(
-      "savedShortMoviesCheck"
-    );
-    if (savedShortMoviesCheck === "true") {
+    const savedShortMovieCheck = localStorage.getItem("savedShortMovieCheck");
+    if (savedShortMovieCheck === "true") {
       setSaveShortMovie(true);
     }
-    const shortMoviesCheck = localStorage.getItem("shortMoviesCheckbox");
-    if (shortMoviesCheck === "true") {
+    const shortMovieCheck = localStorage.getItem("shortMoviesCheckbox");
+    if (shortMovieCheck === "true") {
       setShortMovieCheck(true);
     }
 
@@ -111,7 +110,7 @@ function App() {
     if (location.pathname !== "/saved-movies") {
       localStorage.removeItem("saved-filtered-movies");
       localStorage.removeItem("saved-filtered-short-movies");
-      localStorage.removeItem("savedShortMoviesCheck");
+      localStorage.removeItem("savedShortMovieCheck");
       setSaveShortMovie(false);
     } else {
       updateSaveMovies();
@@ -286,7 +285,7 @@ function App() {
         return;
       }
       setShortMovieCheck(!shortMovieCheck);
-      localStorage.setItem("shortMoviesCheckbox", !shortMovieCheck);
+      localStorage.setItem("shortMovieCheck", !shortMovieCheck);
     }
 
     if (location.pathname === "/saved-movies") {
@@ -301,7 +300,7 @@ function App() {
       const savedFilteredShortMovies = saveMoviesArray.filter(
         (movie) => movie.duration <= DEFAULT_MOVIE_DURATION
       );
-      localStorage.setItem("savedShortMoviesCheck", !saveShortMovie);
+      localStorage.setItem("savedShortMovieCheck", !saveShortMovie);
       setSaveMovies(
         saveShortMovie ? saveMoviesArray : savedFilteredShortMovies
       );
@@ -315,25 +314,33 @@ function App() {
       setErrorMessage("Нужно ввести название");
       return;
     }
-  
+
     setNotFound(false);
-  
-    const localSaveMovies = JSON.parse(localStorage.getItem("allSaveMovies")) || [];
+
+    const localSaveMovies =
+      JSON.parse(localStorage.getItem("allSaveMovies")) || [];
     const searchedMoviesLowerCase = movieToSearch.toLowerCase();
-  
+
     let filteredSaveMovies;
     if (saveShortMovie) {
-      filteredSaveMovies = localSaveMovies.filter(movie => 
-        movie.duration <= DEFAULT_MOVIE_DURATION &&
-        (movie.nameRU.toLowerCase().includes(searchedMoviesLowerCase) || movie.nameEN.toLowerCase().includes(searchedMoviesLowerCase))
+      filteredSaveMovies = localSaveMovies.filter(
+        (movie) =>
+          movie.duration <= DEFAULT_MOVIE_DURATION &&
+          (movie.nameRU.toLowerCase().includes(searchedMoviesLowerCase) ||
+            movie.nameEN.toLowerCase().includes(searchedMoviesLowerCase))
       );
     } else {
-      filteredSaveMovies = localSaveMovies.filter(movie =>
-        movie.nameRU.toLowerCase().includes(searchedMoviesLowerCase) || movie.nameEN.toLowerCase().includes(searchedMoviesLowerCase)
+      filteredSaveMovies = localSaveMovies.filter(
+        (movie) =>
+          movie.nameRU.toLowerCase().includes(searchedMoviesLowerCase) ||
+          movie.nameEN.toLowerCase().includes(searchedMoviesLowerCase)
       );
     }
-  
-    localStorage.setItem("saved-filtered-movies", JSON.stringify(filteredSaveMovies));
+
+    localStorage.setItem(
+      "saved-filtered-movies",
+      JSON.stringify(filteredSaveMovies)
+    );
     setSaveMovies(filteredSaveMovies);
     setNotFound(filteredSaveMovies.length === 0);
   };
@@ -345,7 +352,6 @@ function App() {
       .then((res) => {
         localStorage.setItem("allSaveMovies", JSON.stringify(res));
         setSaveMovies(res);
-        setAllSaveMovies(res);
       })
       .catch((err) => {
         console.error("Ошибка при получении списка сохраненных фильмов:", err);
@@ -375,7 +381,7 @@ function App() {
         setIsOpen(true);
         setErrorMessage("При сохранении фильма произошла ошибка.");
       });
-  }
+  };
 
   // Функция для получения ID фильма для удаления
   const getMovieToDeleteId = (movie) => {
@@ -390,18 +396,19 @@ function App() {
     }
   };
 
-  // Функция для удаления фильма
+  // Функция для удаления фильма по его ID
   const handleDeleteMovie = (movieId) => {
     apiMain
       .deleteMovie(movieId)
       .then(() => {
-        setAllSaveMovies((state) =>
-          state.filter((saveMovie) => saveMovie._id !== movieId)
-        );
+        // Удаление фильма из списка сохраненных фильмов
+        setSaveMovies(saveMovies.filter((movie) => movie._id !== movieId));
       })
-      .catch(() => {
+      .catch((error) => {
         setIsOpen(true);
-        setErrorMessage("При удалении фильма произошла ошибка.");
+        setErrorMessage(
+          "При удалении фильма произошла ошибка: " + error.message + " - попробуйте обновить страницу"
+        );
       });
   };
 
@@ -446,7 +453,7 @@ function App() {
               <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <SaveMovies
                   onChooseShortMovies={handleChooseShortMovies}
-                  savedShortMoviesCheck={saveShortMovie}
+                  savedShortMovieCheck={saveShortMovie}
                   nothingFound={notFound}
                   onSearchMovie={handleSearchSaveMovie}
                   deleteMovie={handleDeleteMovie}

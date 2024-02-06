@@ -4,7 +4,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 const SaveMovies = ({
   nothingFound,
   onChooseShortMovies,
-  savedShortMoviesCheck,
+  savedShortMovieCheck,
   saveMoviesArray,
   deleteMovie,
   onSearchMovie,
@@ -12,7 +12,7 @@ const SaveMovies = ({
   return (
     <section className="movies">
       <SearchForm
-        shortMoviesCheck={savedShortMoviesCheck}
+        shortMovieCheck={savedShortMovieCheck}
         onChooseShortMovies={onChooseShortMovies}
         onSearchMovie={onSearchMovie}
       />
