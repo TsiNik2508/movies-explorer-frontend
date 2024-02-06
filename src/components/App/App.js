@@ -68,12 +68,12 @@ function App() {
     }
 
     // Проверка сохраненных фильтров для короткометражек
-    const savedShortMovieCheck = localStorage.getItem("savedShortMovieCheck");
-    if (savedShortMovieCheck === "true") {
+    const savedShortMoviesCheck = localStorage.getItem("savedShortMoviesCheck");
+    if (savedShortMoviesCheck === "true") {
       setSaveShortMovie(true);
     }
-    const shortMovieCheck = localStorage.getItem("shortMoviesCheckbox");
-    if (shortMovieCheck === "true") {
+    const shortMoviesCheck = localStorage.getItem("shortMoviesCheckbox");
+    if (shortMoviesCheck === "true") {
       setShortMovieCheck(true);
     }
 
@@ -110,7 +110,7 @@ function App() {
     if (location.pathname !== "/saved-movies") {
       localStorage.removeItem("saved-filtered-movies");
       localStorage.removeItem("saved-filtered-short-movies");
-      localStorage.removeItem("savedShortMovieCheck");
+      localStorage.removeItem("savedShortMoviesCheck");
       setSaveShortMovie(false);
     } else {
       updateSaveMovies();
@@ -285,7 +285,7 @@ function App() {
         return;
       }
       setShortMovieCheck(!shortMovieCheck);
-      localStorage.setItem("shortMovieCheck", !shortMovieCheck);
+      localStorage.setItem("shortMoviesCheckbox", !shortMovieCheck);
     }
 
     if (location.pathname === "/saved-movies") {
@@ -300,7 +300,7 @@ function App() {
       const savedFilteredShortMovies = saveMoviesArray.filter(
         (movie) => movie.duration <= DEFAULT_MOVIE_DURATION
       );
-      localStorage.setItem("savedShortMovieCheck", !saveShortMovie);
+      localStorage.setItem("savedShortMoviesCheck", !saveShortMovie);
       setSaveMovies(
         saveShortMovie ? saveMoviesArray : savedFilteredShortMovies
       );
@@ -352,6 +352,7 @@ function App() {
       .then((res) => {
         localStorage.setItem("allSaveMovies", JSON.stringify(res));
         setSaveMovies(res);
+        setAllSaveMovies(res);
       })
       .catch((err) => {
         console.error("Ошибка при получении списка сохраненных фильмов:", err);
@@ -396,19 +397,18 @@ function App() {
     }
   };
 
-  // Функция для удаления фильма по его ID
+  // Функция для удаления фильма
   const handleDeleteMovie = (movieId) => {
     apiMain
       .deleteMovie(movieId)
       .then(() => {
-        // Удаление фильма из списка сохраненных фильмов
-        setSaveMovies(saveMovies.filter((movie) => movie._id !== movieId));
-      })
-      .catch((error) => {
-        setIsOpen(true);
-        setErrorMessage(
-          "При удалении фильма произошла ошибка: " + error.message + " - попробуйте обновить страницу"
+        setAllSaveMovies((state) =>
+          state.filter((saveMovie) => saveMovie._id !== movieId)
         );
+      })
+      .catch(() => {
+        setIsOpen(true);
+        setErrorMessage("При удалении фильма произошла ошибка.");
       });
   };
 
@@ -453,7 +453,7 @@ function App() {
               <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <SaveMovies
                   onChooseShortMovies={handleChooseShortMovies}
-                  savedShortMovieCheck={saveShortMovie}
+                  savedShortMoviesCheck={saveShortMovie}
                   nothingFound={notFound}
                   onSearchMovie={handleSearchSaveMovie}
                   deleteMovie={handleDeleteMovie}
