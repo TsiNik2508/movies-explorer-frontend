@@ -5,12 +5,14 @@ import "./SignPage.css";
 
 const SignPage = ({
   titleText,
-  formSign,
   buttonText,
   logText,
   path,
   signLink,
   inputVal,
+  children,
+  isLockedButton,
+  onSubmit,
 }) => {
   return (
     <section className="sign-page">
@@ -20,9 +22,9 @@ const SignPage = ({
         </Link>
         <h2 className="sign-page__subtitle">{titleText}</h2>
       </div>
-      <form className="sign-page__form">
-        {formSign}
-        <button disabled={inputVal} className="sign-page__button" type="submit">
+      <form onSubmit={onSubmit} className="sign-page__form">
+        {children}
+        <button disabled={inputVal || (isLockedButton && 'disabled')} className="sign-page__button" type="submit">
           {buttonText}
         </button>
       </form>

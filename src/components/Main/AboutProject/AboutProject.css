@@ -1,4 +1,6 @@
 .about {
+  max-width: 1140px;
+  margin: 0 auto;
   padding: 70px 18px;
 }
 
@@ -135,4 +137,3 @@
     row-gap: 17px;
   }
 }
-

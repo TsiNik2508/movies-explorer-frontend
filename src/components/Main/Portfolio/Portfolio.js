@@ -8,7 +8,7 @@ const Portfolio = () => {
         <li className="portfolio__item">
           <a
             className="portfolio__link"
-            href="https://github.com/TsiNik2508/how-to-learn/"
+            href="https://tsinik2508.github.io/how-to-learn/"
             target="_blank"
             rel="noreferrer"
           >
@@ -19,7 +19,7 @@ const Portfolio = () => {
         <li className="portfolio__item">
           <a
             className="portfolio__link"
-            href="https://github.com/TsiNik2508/russian-travel/"
+            href="https://tsinik2508.github.io/russian-travel/"
             target="_blank"
             rel="noreferrer"
           >
@@ -30,7 +30,7 @@ const Portfolio = () => {
         <li className="portfolio__item">
           <a
             className="portfolio__link"
-            href="https://github.com/TsiNik2508/mesto-react/"
+            href="https://tsinik2508.github.io/react-mesto-auth/"
             target="_blank"
             rel="noreferrer"
           >

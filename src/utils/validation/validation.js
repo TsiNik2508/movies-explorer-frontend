@@ -59,16 +59,12 @@ const useInput = (initialValue, validations) => {
 
   const onChange = (e) => {
     setValue(e.target.value);
-  };
-
-  const onBlur = () => {
     setIsDirty(true);
   };
 
   return {
     value,
     onChange,
-    onBlur,
     isDirty,
     ...valid,
   };

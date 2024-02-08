@@ -1,7 +1,12 @@
+import { useLocation } from "react-router-dom";
 import "./Footer.css";
 
 const Footer = () => {
-  return (
+  const location = useLocation();
+
+  return location.pathname === "/" ||
+    location.pathname === "/movies" ||
+    location.pathname === "/saved-movies" ? (
     <footer className="footer">
       <h2 className="footer__title">
         Учебный проект Яндекс.Практикум х BeatFilm.
@@ -23,7 +28,7 @@ const Footer = () => {
               className="footer__links"
               href="https://github.com/TsiNik2508"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               Github
             </a>
@@ -32,7 +37,7 @@ const Footer = () => {
         <span className="footer__date">© 2024</span>
       </div>
     </footer>
-  );
+  ) : null;
 };
 
 export default Footer;

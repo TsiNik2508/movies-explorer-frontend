@@ -1,13 +1,28 @@
 import SearchForm from "../SearchForm/SearchForm";
-import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
-const SavedMovies = () => {
+const SaveMovies = ({
+  nothingFound,
+  onChooseShortMovies,
+  savedShortMovieCheck,
+  saveMoviesArray,
+  deleteMovie,
+  onSearchMovie,
+}) => {
   return (
     <section className="movies">
-      <SearchForm />
-      <MoviesCardList/>
+      <SearchForm
+        shortMovieCheck={savedShortMovieCheck}
+        onChooseShortMovies={onChooseShortMovies}
+        onSearchMovie={onSearchMovie}
+      />
+      <MoviesCardList
+        deleteMovie={deleteMovie}
+        nothingFound={nothingFound}
+        saveMoviesArray={saveMoviesArray}
+      />
     </section>
   );
 };
 
-export default SavedMovies;
+export default SaveMovies;

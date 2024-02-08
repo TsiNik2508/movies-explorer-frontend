@@ -8,6 +8,12 @@
   margin-bottom: 16px;
 }
 
+.movies-card-list__error {
+  margin-top: 50px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
 @media screen and (min-width: 576px) {
   .movies-card-list{
     display: grid;
@@ -30,7 +36,7 @@
 
 @media screen and (min-width: 1024px) {
   .movies-card-list {
-    padding: 70px 70px 228px;
+    padding: 70px 70px 10px;
     gap: 32px;
     grid-template-columns: repeat(3, calc((100% - 64px)/3));
   }

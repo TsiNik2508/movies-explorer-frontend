@@ -1,7 +1,7 @@
 .app {
+  background-color:  #202020;
+  color: #fff;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
   min-width: 100%;
   min-height: 100vh;
-  color: #fff;
-  background-color:  #202020;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
